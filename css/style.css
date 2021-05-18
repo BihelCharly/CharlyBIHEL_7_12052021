@@ -1,0 +1,260 @@
+/* UTILS */
+/* COLORS */
+/* LAYOUTS */
+footer {
+  text-align: center;
+}
+footer span {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.group {
+  padding: 50px 0px 0px 0px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.group .logo {
+  width: 60px;
+  height: 50px;
+  align-self: center;
+}
+.group .title {
+  color: #D04F4F;
+  font-family: "DM regular";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 47px;
+  text-align: center;
+}
+
+/* COMPONENTS */
+.btn-group .btn-primary {
+  background-color: #3282F7;
+}
+.btn-group .dropdown-menu {
+  color: white;
+  background-color: #3282F7;
+  border-radius: 5px;
+}
+.btn-group .dropdown-menu .dropdown-item {
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 69px;
+}
+
+.icon {
+  font-size: 2em;
+  height: 100%;
+  padding-top: 20px;
+  padding-right: 25px;
+  background: #E7E7E7;
+  color: black;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.input-field {
+  height: 100%;
+  width: 100%;
+  text-indent: 30px;
+  padding: 10px;
+  outline: none;
+  background-color: #E7E7E7;
+  border: transparent;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.input-field::placeholder {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #000000;
+  opacity: 0.25;
+}
+
+.inputs-container {
+  width: 50%;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Lato";
+}
+
+.input--ingredients,
+.input--devices,
+.input--utensils {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.btn-field {
+  height: 100%;
+  width: 150px;
+  text-indent: 30px;
+  font-size: 1em;
+  padding: 10px;
+  outline: none;
+  background-color: #3282F7;
+  font-weight: bold;
+  color: white;
+  border: transparent;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.style--ingredients {
+  background-color: #3282F7;
+}
+
+.style--devices {
+  background-color: #68D9A4;
+}
+
+.style--utensils {
+  background-color: #ED6454;
+}
+
+.btn-field::placeholder {
+  font-weight: bold;
+  color: white;
+  font-size: 1em;
+  opacity: 1;
+}
+
+.arrowhead--down {
+  font-size: 2em;
+  height: 100%;
+  color: white;
+  width: 50px;
+  text-align: center;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.receipes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+.receipes .card {
+  width: 31%;
+  background: #E7E7E7;
+  border-radius: 5px;
+}
+.receipes .card__img {
+  height: 200px;
+  background: #C7BEBE;
+  border-radius: 5px 5px 0px 0px;
+}
+.receipes .card__description {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 15px 10px 50px 10px;
+}
+.receipes .ingredients {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  padding-right: 5px;
+}
+.receipes .ingredients p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 0px;
+}
+.receipes .ingredients > p:nth-child(1) {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  padding-bottom: 5px;
+}
+.receipes .ingredients > p:nth-child(2) {
+  padding-top: 6px;
+}
+.receipes .howto {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  padding-left: 5px;
+}
+.receipes .howto p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 100%;
+}
+.receipes .howto > p:nth-child(1) {
+  text-align: right;
+  padding-right: 10px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  padding-bottom: 5px;
+}
+
+/* BASE */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body * {
+  box-sizing: border-box;
+  font-size: 1em;
+}
+body main {
+  max-width: 1300px;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+body a {
+  text-decoration: none;
+}
+body a:visited {
+  color: inherit;
+}
+
+@font-face {
+  font-family: "DM regular";
+  src: url("../../../../../public/Fonts/DMSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM medium";
+  src: url("./../../../../../public/fonts/DMSans-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM bold";
+  src: url("./../../../../../public/fonts/DMSans-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./../../../../../public/fonts/Lato-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+/*# sourceMappingURL=style.css.map */
