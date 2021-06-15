@@ -73,3 +73,16 @@ function returnElements(parent) {
     }
     return list;
 }
+
+function returnListSelector(list) {
+    if (list === 'input--ingredients') {
+        list = ingredientsList;
+    } else if (list === 'input--devices') {
+        list = devicesList;
+    } else if (list === 'input--utensils') {
+        list = utensilsList;
+    } else {
+        list = list;
+    }
+    return list;
+}

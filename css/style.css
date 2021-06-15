@@ -162,9 +162,8 @@ footer span {
 }
 
 .ingredients__list {
-  position: absolute;
   z-index: 10;
-  height: 600px;
+  height: auto;
   background-color: #3282F7;
   font-weight: bold;
   color: white;
@@ -179,9 +178,8 @@ footer span {
 }
 
 .devices__list {
-  position: absolute;
   z-index: 10;
-  height: 600px;
+  height: auto;
   background-color: #68D9A4;
   font-weight: bold;
   color: white;
@@ -196,9 +194,8 @@ footer span {
 }
 
 .utensils__list {
-  position: absolute;
   z-index: 10;
-  height: 600px;
+  height: auto;
   background-color: #ED6454;
   font-weight: bold;
   color: white;
@@ -212,13 +209,27 @@ footer span {
   margin: 0px;
 }
 
-.ingredients__list > li,
-.devices__list > li,
-.utensils__list > li {
+.ingredients__list ul,
+.devices__list ul,
+.utensils__list ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 250px;
+  max-height: 650px;
+  row-gap: 6px;
+  column-gap: 1px;
+  padding: 0px;
+  margin: 0px;
+}
+.ingredients__list li,
+.devices__list li,
+.utensils__list li {
   cursor: pointer;
 }
 
-.search__tags {
+.tags-container {
+  height: 75px;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -226,7 +237,7 @@ footer span {
   justify-content: start;
   column-gap: 20px;
 }
-.search__tags button {
+.tags-container button {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -238,7 +249,7 @@ footer span {
   border: transparent;
   border-radius: 5px;
 }
-.search__tags button i {
+.tags-container button i {
   padding-left: 15px;
   font-size: 2em;
 }
@@ -312,6 +323,13 @@ footer span {
   font-size: 18px;
   line-height: 22px;
   padding-bottom: 5px;
+}
+
+.error {
+  color: #D04F4F;
+  padding-top: 50px;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 /* BASE */
