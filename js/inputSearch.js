@@ -5,10 +5,10 @@ input.addEventListener("keyup", searchBegins);
 function searchBegins(element) {
     let result;
     let value = deleteLastCharIfS(element.explicitOriginalTarget.value);
-    let valueLowerCase = value.toLowerCase();
-    let valueFirstChar = firstCharCap(valueLowerCase);
+    let valueToLowerCase = value.toLowerCase();
+    let firstLetterToCap = firstCharCap(valueToLowerCase);
     if (value.length >= 3) {
-        result = searchinAllArray(recipes, valueLowerCase, valueFirstChar);
+        result = searchinAllArray(recipes, valueToLowerCase, firstLetterToCap);
         if (result.length === 0) {
             showError();
         } else {
@@ -31,28 +31,28 @@ function searchBegins(element) {
     });
 }
 
-// TO SEARCH INSIDE ARRAY RECIPES
-function searchinAllArray(array, valueLowerCase, valueFirstChar) {
+// TO SEARCH INSIDE ARRAY RECIPES STEP BY STEP
+function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
     let filter = array.filter(function(object) {
-        let testName1 = object.name.includes(valueLowerCase);
-        let testName2 = object.name.includes(valueFirstChar);
+        let testName1 = object.name.includes(valueToLowerCase);
+        let testName2 = object.name.includes(firstLetterToCap);
         if (testName1 || testName2) {
             return object;
         }
-        let testAppliance = object.appliance.includes(valueLowerCase);
+        let testAppliance = object.appliance.includes(valueToLowerCase);
         if (testAppliance) {
             return object;
         }
-        let testUtensils = object.ustensils.includes(valueFirstChar);
+        let testUtensils = object.ustensils.includes(firstLetterToCap);
         if (testUtensils) {
             return object;
         }
-        let testDescription = object.description.includes(valueLowerCase);
+        let testDescription = object.description.includes(valueToLowerCase);
         if (testDescription) {
             return object;
         }
         object.ingredients.filter(function(element) {
-            let testIngredient = element.ingredient.includes(valueLowerCase);
+            let testIngredient = element.ingredient.includes(valueToLowerCase);
             if (testIngredient) {
                 return object;
             }

@@ -81,21 +81,13 @@ function createTag(element) {
     newTag.addEventListener('click', removeElement);
     newTag.insertAdjacentHTML("beforeend", '<i class="far fa-times-circle"></i>');
     tagsContainer.append(newTag);
-    searchWithTags(status, tagText);
+    searchWithTags(status, tagText, parentClassName);
     displayOff(parentClassName);
     arrowDown(ingredientsBtn);
     arrowDown(devicesBtn);
     arrowDown(utensilsBtn);
 }
 
-// TO REMOVE TAGS ON CLICK
-function removeElement(e) {
-    if (e.target.tagName === 'BUTTON') {
-        e.target.remove();
-    } else {
-        e.target.parentElement.remove();
-    }
-}
 
 // TO FILTER RESULTS IN LIST
 function returnElementsInList(list, value) {

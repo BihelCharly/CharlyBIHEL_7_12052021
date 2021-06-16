@@ -8,8 +8,9 @@ recipes.forEach(item => {
     // GET INGREDIENTS
     for (let i = 0; i < item.ingredients.length; i++) {
         let elements = item.ingredients[i].ingredient;
-        //let elementsTreatement = elements.substr(0, elements.indexOf(' ')).replace(/\./g, "");
+        let elementsTreatement = elements.substr(0, elements.indexOf(' ')).replace(/\./g, "");
         arrayIngredients.push(elements);
+        //arrayIngredients.push(elementsTreatement);
     }
     // GET UTENSILS
     for (let i = 0; i < item.ustensils.length; i++) {
@@ -26,7 +27,7 @@ recipes.forEach(item => {
 arrayIngredients = [...new Set(arrayIngredients)];
 arrayDevices = [...new Set(arrayDevices)];
 arrayUtensils = [...new Set(arrayUtensils)];
-
+// PUSH ELEMENTS IN DROPDOWNS - AT DROPDOWN.JS
 arrayToDropDown(arrayIngredients, ingredientsList);
 arrayToDropDown(arrayDevices, devicesList);
 arrayToDropDown(arrayUtensils, utensilsList);
