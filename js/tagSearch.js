@@ -20,43 +20,44 @@ function searchWithTags(status, value, where) {
             showError();
         } else {
             status = true;
+            cleanAllDropDown();
+            arrayIngredients = [];
+            arrayDevices = [];
+            arrayUtensils = [];
             duplicatedArray.forEach(function(object) {
                 displayRecipes(object);
             });
+            treatmentsForElementsInDropDown();
         }
     }
 }
 
 // FONCTION DE FILTRE QUI RETOURNE LES OBJETS CORRESPONDANT A LA VALEUR ENVOYé PAR LE LISTENER
 function filterArrayWithTags(array, value, parentClassName) {
-    let test1;
-    let test2;
-    let temporaryArray = [];
+    let test;
     let valueToLowerCase = value.toLowerCase();
     let firstLetterToCap = firstCharCap(valueToLowerCase);
-    array.filter(function(object) {
+    let filter = array.filter(function(object) {
         switch (parentClassName) {
             case 'ingredients__list list':
-                object.ingredients.filter(function(element) {
-                    //console.log(element.ingredient);
-                    test1 = element.ingredient.includes(valueToLowerCase);
-                    test2 = element.ingredient.includes(firstLetterToCap);
+                test = object.ingredients.filter(function(element) {
+                    let results = testsValue(element.ingredient, valueToLowerCase, firstLetterToCap);
+                    return results;
+                });
+                break;
+            case 'utensils__list list':
+                test = object.ustensils.filter(function(element) {
+                    let results = testsValue(element, valueToLowerCase, firstLetterToCap);
+                    return results;
                 });
                 break;
             case 'devices__list list':
-                test1 = object.appliance.includes(valueToLowerCase);
-                test2 = object.appliance.includes(firstLetterToCap);
-                break;
-            case 'utensils__list list':
-                object.ustensils.filter(function(element) {
-                    test1 = element.includes(valueToLowerCase);
-                    test2 = element.includes(firstLetterToCap);
-                });
-                break;
+                test = testsValue(object.appliance, valueToLowerCase, firstLetterToCap);
+                return test;
         }
-        if (test1 || test2) {
-            temporaryArray.push(object);
+        if (test.length > 0) {
+            return object;
         }
     });
-    return temporaryArray;
+    return filter;
 }

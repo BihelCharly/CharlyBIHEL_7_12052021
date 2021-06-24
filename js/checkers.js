@@ -1,5 +1,5 @@
-// SWITCH FUNCTIONS OF DISPLAY OR NOT THE DROPDOWNS
-//// ON - SHOW THE ELEMENT IN PARAMETER
+// SWITCH FUNCTIONS TO DISPLAY OR NOT THE DROPDOWNS
+//// ON - SHOW ELEMENT IN PARAMETER
 function displayOn(element) {
     switch (element) {
         case 'input--ingredients':
@@ -16,7 +16,7 @@ function displayOn(element) {
             break;
     }
 }
-//// OFF - HIDE THE ELEMENT IN PARAMETER
+//// OFF - HIDE ELEMENT IN PARAMETER
 function displayOff(element) {
     switch (element) {
         case 'input--ingredients':

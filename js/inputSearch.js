@@ -39,8 +39,8 @@ function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
         if (testName1 || testName2) {
             return object;
         }
-        let testAppliance = object.appliance.includes(valueToLowerCase);
-        if (testAppliance) {
+        let testDevice = object.appliance.includes(valueToLowerCase);
+        if (testDevice) {
             return object;
         }
         let testUtensils = object.ustensils.includes(firstLetterToCap);

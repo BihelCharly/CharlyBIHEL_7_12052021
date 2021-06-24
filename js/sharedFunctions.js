@@ -1,7 +1,21 @@
-// TO CALL THE FUNCTION FOR THE FACTORY METHOD TO CREATE ARTICLES/CARDS
+// TO CALL THE FACTORY METHOD TO CREATE ARTICLES/CARDS
 function displayRecipes(element) {
     let factory = new Factory();
     factoryObjects = factory.createCard(element);
+}
+
+// TO CALL THE FACTORY METHOD TO CREATE ARTICLES/CARDS W ARRAY IN PARAMETER
+function displayAllRecipesFromArray(array) {
+    array.forEach(item => {
+        displayRecipes(item);
+    });
+}
+
+// RETURN TRUE IF VALUE IS PRESENT IN OBJECT PROPERTY
+function testsValue(objectProperty, value1, value2) {
+    let test1 = objectProperty.includes(value1);
+    let test2 = objectProperty.includes(value2);
+    return test1 || test2;
 }
 
 // TO DELETE LAST CHARACTER IF S
@@ -15,10 +29,16 @@ function deleteLastCharIfS(string) {
     }
 }
 
-// TO RETURN THE STRING WITH A CAPS FOR THE FIRST CHAR
+function sortElementsAZ(array) {
+    array.sort();
+}
+
+// TO RETURN THE STRING WITH A CAPITAL FOR THE FIRST CHAR
 function firstCharCap(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// ----- HTML -----
 
 // TO DELETE EVERYTHING IN DIV ERROR + RECIPES
 function cleanBothDiv() {
@@ -35,6 +55,12 @@ function showError() {
 // TO CLEAN DROPDOWN
 function cleanDropDown(element) {
     element.innerHTML = '';
+}
+
+function cleanAllDropDown() {
+    ingredientsList.innerHTML = '';
+    devicesList.innerHTML = '';
+    utensilsList.innerHTML = '';
 }
 
 // FUNCTION TO SHOW LIST IN PARAMETER
