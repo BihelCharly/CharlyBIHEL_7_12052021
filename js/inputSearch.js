@@ -11,17 +11,25 @@ function searchBegins(element) {
         result = searchinAllArray(recipes, valueToLowerCase, firstLetterToCap);
         if (result.length === 0) {
             showError();
+            cleanAllDropDown();
+            cleanTempArrays();
         } else {
             cleanBothDiv();
+            cleanAllDropDown();
+            cleanTempArrays();
             result.forEach(function(object) {
                 displayRecipes(object);
             });
+            treatmentsForElementsInDropDown();
         }
     } else if (value.length < 3) {
         cleanBothDiv();
+        cleanAllDropDown();
+        cleanTempArrays();
         recipes.forEach(function(object) {
             displayRecipes(object);
         });
+        treatmentsForElementsInDropDown();
     }
     // TO CLOSE ALL DROPDOWN LIST
     hideList();

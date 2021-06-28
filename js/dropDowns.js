@@ -3,6 +3,7 @@ let arrayIngredients = [];
 let arrayDevices = [];
 let arrayUtensils = [];
 
+
 // TO DISPLAY ALL RECIPES
 displayAllRecipesFromArray(recipes);
 
@@ -14,6 +15,10 @@ function treatmentsForElementsInDropDown() {
     arrayIngredients = [...new Set(arrayIngredients)];
     arrayDevices = [...new Set(arrayDevices)];
     arrayUtensils = [...new Set(arrayUtensils)];
+    // DELETE DUPLICATED ELEMENTS IF PLURALS
+    arrayIngredients = removeDuplicatePlurals(arrayIngredients);
+    arrayDevices = removeDuplicatePlurals(arrayDevices);
+    arrayUtensils = removeDuplicatePlurals(arrayUtensils);
     // FUNCTION CALLED TO SORT ARRAYS FROM A TO Z
     sortElementsAZ(arrayIngredients);
     sortElementsAZ(arrayDevices);

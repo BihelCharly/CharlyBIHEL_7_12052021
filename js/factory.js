@@ -49,18 +49,20 @@ function Factory() {
         // PUSH ELEMENTS TO DROPDOWNS
         newCard.dropDowns = (() => {
             for (let i = 0; i < object.ingredients.length; i++) {
-                let elements = object.ingredients[i].ingredient;
-                //let elementsTreatement = elements.substr(0, elements.indexOf(' ')).replace(/\./g, "");
-                arrayIngredients.push(elements);
+                let element = object.ingredients[i].ingredient.toLowerCase();
+                element = firstCharCap(element);
+                arrayIngredients.push(element);
             }
             // GET UTENSILS
             for (let i = 0; i < object.ustensils.length; i++) {
-                let elements = object.ustensils[i].charAt(0).toUpperCase() + object.ustensils[i].slice(1);
-                arrayUtensils.push(elements);
+                let element = object.ustensils[i].toLowerCase();
+                element = firstCharCap(element);
+                arrayUtensils.push(element);
             }
             // GET DEVICES
-            let elements = object.appliance;
-            arrayDevices.push(elements);
+            let element = object.appliance.toLowerCase();
+            element = firstCharCap(element);
+            arrayDevices.push(element);
         })(object.ingredients, object.ustensils, object.appliance);
 
         // APPEND ELEMENT TROUGHT THE DOM

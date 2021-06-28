@@ -4,6 +4,13 @@ function displayRecipes(element) {
     factoryObjects = factory.createCard(element);
 }
 
+// TO CLEAN TEMP ARRAYS FOR DROP DOWNS
+function cleanTempArrays() {
+    arrayIngredients = [];
+    arrayDevices = [];
+    arrayUtensils = [];
+}
+
 // TO CALL THE FACTORY METHOD TO CREATE ARTICLES/CARDS W ARRAY IN PARAMETER
 function displayAllRecipesFromArray(array) {
     array.forEach(item => {
@@ -27,6 +34,18 @@ function deleteLastCharIfS(string) {
     } else {
         return string;
     }
+}
+
+// TO DELETE LAST CHAR IF S AND DUPLICATE ITEM
+function removeDuplicatePlurals(array) {
+    let arrayTmp = [];
+    array.forEach(e => {
+        if (e.slice(-1) === "s" && array.includes(e.replace(/s$/, ""))) {
+            arrayTmp.push(e);
+        }
+    });
+    arrayTmp = array.filter(e => !arrayTmp.includes(e));
+    return arrayTmp;
 }
 
 function sortElementsAZ(array) {
