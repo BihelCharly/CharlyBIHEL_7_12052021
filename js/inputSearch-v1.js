@@ -41,30 +41,24 @@ function searchBegins(element) {
 
 // TO SEARCH INSIDE ARRAY RECIPES STEP BY STEP
 function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
-    let tempArray = [];
-    let status = false;
-    for (let index = 0; index < array.length; index++) {
-        let object = array[index];
-        if (object.name.includes(firstLetterToCap || valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.appliance.includes(valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.ustensils.includes(firstLetterToCap)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.description.includes(valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (status === false) {
-            object.ingredients.filter(function(element) {
-                if (element.ingredient.includes(valueToLowerCase)) {
-                    tempArray.push(object);
-                    status = true;
-                }
-            });
+    let filter = array.filter(function(object) {
+        if (object.name.includes(firstLetterToCap || object.name.includes(valueToLowerCase))) {
+            return object;
         }
-    }
-    return tempArray;
+        if (object.appliance.includes(valueToLowerCase)) {
+            return object;
+        }
+        if (object.ustensils.includes(firstLetterToCap)) {
+            return object;
+        }
+        if (object.description.includes(valueToLowerCase)) {
+            return object;
+        }
+        object.ingredients.filter(function(element) {
+            if (element.ingredient.includes(valueToLowerCase)) {
+                return object;
+            }
+        });
+    });
+    return filter;
 }
