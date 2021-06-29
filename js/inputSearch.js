@@ -42,26 +42,20 @@ function searchBegins(element) {
 // TO SEARCH INSIDE ARRAY RECIPES STEP BY STEP
 function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
     let filter = array.filter(function(object) {
-        let testName1 = object.name.includes(valueToLowerCase);
-        let testName2 = object.name.includes(firstLetterToCap);
-        if (testName1 || testName2) {
+        if (object.name.includes(firstLetterToCap || object.name.includes(valueToLowerCase))) {
             return object;
         }
-        let testDevice = object.appliance.includes(valueToLowerCase);
-        if (testDevice) {
+        if (object.appliance.includes(valueToLowerCase)) {
             return object;
         }
-        let testUtensils = object.ustensils.includes(firstLetterToCap);
-        if (testUtensils) {
+        if (object.ustensils.includes(firstLetterToCap)) {
             return object;
         }
-        let testDescription = object.description.includes(valueToLowerCase);
-        if (testDescription) {
+        if (object.description.includes(valueToLowerCase)) {
             return object;
         }
         object.ingredients.filter(function(element) {
-            let testIngredient = element.ingredient.includes(valueToLowerCase);
-            if (testIngredient) {
+            if (element.ingredient.includes(valueToLowerCase)) {
                 return object;
             }
         });
