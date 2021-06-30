@@ -3,13 +3,13 @@ input.addEventListener("keyup", searchBegins);
 
 // TO SEARCH INSIDE ARRAY RECIPES
 function searchBegins(element) {
-    let result;
+    let results;
     let value = deleteLastCharIfS(element.explicitOriginalTarget.value);
     let valueToLowerCase = value.toLowerCase();
     let firstLetterToCap = firstCharCap(valueToLowerCase);
     if (value.length >= 3) {
-        result = searchinAllArray(recipes, valueToLowerCase, firstLetterToCap);
-        if (result.length === 0) {
+        results = searchinAllArray(recipes, valueToLowerCase, firstLetterToCap);
+        if (results.length === 0) {
             showError();
             cleanAllDropDown();
             cleanTempArrays();
@@ -17,7 +17,9 @@ function searchBegins(element) {
             cleanBothDiv();
             cleanAllDropDown();
             cleanTempArrays();
-            result.forEach(function(object) {
+            sortElementsAZ(results);
+            console.log(results);
+            results.forEach(function(object) {
                 displayRecipes(object);
             });
             treatmentsForElementsInDropDown();
@@ -42,23 +44,21 @@ function searchBegins(element) {
 // TO SEARCH INSIDE ARRAY RECIPES STEP BY STEP
 function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
     let filter = array.filter(function(object) {
-        if (object.name.includes(firstLetterToCap || object.name.includes(valueToLowerCase))) {
-            return object;
-        }
-        if (object.appliance.includes(valueToLowerCase)) {
-            return object;
-        }
-        if (object.ustensils.includes(firstLetterToCap)) {
-            return object;
-        }
-        if (object.description.includes(valueToLowerCase)) {
-            return object;
+        let foundIt = false;
+        if (object.name.includes(firstLetterToCap) || object.name.includes(valueToLowerCase)) {
+            foundIt = true;
         }
         object.ingredients.filter(function(element) {
-            if (element.ingredient.includes(valueToLowerCase)) {
-                return object;
+            if (element.ingredient.includes(firstLetterToCap) || object.name.includes(valueToLowerCase)) {
+                foundIt = true;
             }
         });
+        if (object.description.includes(valueToLowerCase)) {
+            foundIt = true;
+        }
+        if (foundIt) {
+            return foundIt;
+        }
     });
     return filter;
 }
