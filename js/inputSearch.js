@@ -1,15 +1,18 @@
 // EVENTLISTENER TO SEARCH
 input.addEventListener("keyup", searchBegins);
 
-// TO SEARCH INSIDE ARRAY RECIPES
+// ALGO2 - TO SEARCH INSIDE ARRAY RECIPES
 function searchBegins(element) {
-    let result;
+    let results = [];
+    let duplicatedRecipes = recipes;
     let value = deleteLastCharIfS(element.explicitOriginalTarget.value);
     let valueToLowerCase = value.toLowerCase();
     let firstLetterToCap = firstCharCap(valueToLowerCase);
     if (value.length >= 3) {
-        result = searchinAllArray(recipes, valueToLowerCase, firstLetterToCap);
-        if (result.length === 0) {
+        duplicatedRecipes = searchInNameArray(duplicatedRecipes, firstLetterToCap, valueToLowerCase, results);
+        duplicatedRecipes = searchInIngredientsArray(duplicatedRecipes, firstLetterToCap, valueToLowerCase, results);
+        searchInDescriptionArray(duplicatedRecipes, valueToLowerCase, results);
+        if (results.length === 0) {
             showError();
             cleanAllDropDown();
             cleanTempArrays();
@@ -17,12 +20,15 @@ function searchBegins(element) {
             cleanBothDiv();
             cleanAllDropDown();
             cleanTempArrays();
-            result.forEach(function(object) {
+            sortElementsAZ(results);
+            console.log(results);
+            results.forEach(function(object) {
                 displayRecipes(object);
             });
             treatmentsForElementsInDropDown();
         }
     } else if (value.length < 3) {
+        duplicatedRecipes = recipes;
         cleanBothDiv();
         cleanAllDropDown();
         cleanTempArrays();
@@ -39,32 +45,45 @@ function searchBegins(element) {
     });
 }
 
-// TO SEARCH INSIDE ARRAY RECIPES STEP BY STEP
-function searchinAllArray(array, valueToLowerCase, firstLetterToCap) {
-    let tempArray = [];
-    let status = false;
-    for (let index = 0; index < array.length; index++) {
-        let object = array[index];
-        if (object.name.includes(firstLetterToCap || valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.appliance.includes(valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.ustensils.includes(firstLetterToCap)) {
-            tempArray.push(object);
-            status = true;
-        } else if (object.description.includes(valueToLowerCase)) {
-            tempArray.push(object);
-            status = true;
-        } else if (status === false) {
-            object.ingredients.filter(function(element) {
-                if (element.ingredient.includes(valueToLowerCase)) {
-                    tempArray.push(object);
-                    status = true;
-                }
-            });
+function addToNewArray(newArray, object) {
+    newArray.push(object);
+}
+
+// TO SEARCH INSIDE NAME PROPERTY
+function searchInNameArray(array, firstLetterToCap, valueToLowerCase, results) {
+    let filter = array.filter(function(object) {
+        if (object.name.includes(firstLetterToCap) || object.name.includes(valueToLowerCase)) {
+            addToNewArray(results, object);
+        } else {
+            return object;
         }
-    }
-    return tempArray;
+    });
+    return filter;
+}
+
+// TO SEARCH INSIDE INGREDIENTS PROPERTY
+function searchInIngredientsArray(array, firstLetterToCap, valueToLowerCase, results) {
+    let filter = array.filter(function(object) {
+        let foundIt = false;
+        object.ingredients.forEach(function(element) {
+            if (element.ingredient.includes(firstLetterToCap) || element.ingredient.includes(valueToLowerCase)) {
+                foundIt = true;
+            }
+        });
+        if (foundIt) {
+            addToNewArray(results, object);
+        } else {
+            return !foundIt;
+        }
+    });
+    return filter;
+}
+
+// TO SEARCH INSIDE DESCRIPTION PROPERTY
+function searchInDescriptionArray(array, valueToLowerCase, results) {
+    array.filter(function(object) {
+        if (object.description.includes(valueToLowerCase)) {
+            addToNewArray(results, object);
+        }
+    });
 }
