@@ -3,6 +3,7 @@ input.addEventListener("keyup", searchBegins);
 
 // ALGO2 - TO SEARCH INSIDE ARRAY RECIPES
 function searchBegins(element) {
+    resetAllPlaceholdersInDropDown();
     let results = [];
     let duplicatedRecipes = recipes;
     let value = deleteLastCharIfS(element.explicitOriginalTarget.value);

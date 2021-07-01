@@ -71,7 +71,7 @@ function showError() {
     divError.innerHTML = 'Aucun résultat trouvé.';
 }
 
-// TO CLEAN DROPDOWN
+// FUNCTIONS TO CLEAN DROPDOWN
 function cleanDropDown(element) {
     element.innerHTML = '';
 }
@@ -85,6 +85,27 @@ function cleanAllDropDown() {
 // FUNCTION TO SHOW LIST IN PARAMETER
 function showList(list) {
     list.style.display = 'flex';
+}
+
+// FUNCTIONS TO CHANGE VALUES IN DROPDOWNS
+function changePlaceholderInDropDown(input) {
+    switch (input) {
+        case 'ingredients':
+            ingredientsInput.placeholder = 'Veuillez sélectionner un ingrédient';
+            break;
+        case 'devices':
+            devicesInput.placeholder = 'Veuillez sélectionner un appareil';
+            break;
+        case 'utensils':
+            utensilsInput.placeholder = 'Veuillez sélectionner un ustensile';
+            break;
+    }
+}
+
+function resetAllPlaceholdersInDropDown() {
+    ingredientsInput.placeholder = 'Ingrédients';
+    devicesInput.placeholder = 'Appareil';
+    utensilsInput.placeholder = 'Ustensiles';
 }
 
 // FUNCTION TO HIDE LIST IN PARAMETER

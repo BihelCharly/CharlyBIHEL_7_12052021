@@ -5,19 +5,23 @@ function displayOn(element) {
         case 'input--ingredients':
             hideList(devicesList, utensilsList);
             showList(ingredientsList);
+            changePlaceholderInDropDown('ingredients');
             break;
         case 'input--devices':
             hideList(ingredientsList, utensilsList);
             showList(devicesList);
+            changePlaceholderInDropDown('devices');
             break;
         case 'input--utensils':
             hideList(ingredientsList, devicesList);
             showList(utensilsList);
+            changePlaceholderInDropDown('utensils');
             break;
     }
 }
 //// OFF - HIDE ELEMENT IN PARAMETER
 function displayOff(element) {
+    resetAllPlaceholdersInDropDown();
     switch (element) {
         case 'input--ingredients':
             hideList(ingredientsList);

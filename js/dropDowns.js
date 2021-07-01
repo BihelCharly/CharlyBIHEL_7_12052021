@@ -60,7 +60,7 @@ function addListenersToDropDown(nodes) {
                 if (matchedElementsInList.length === 0) {
                     let whatDropDown = returnListSelector(capturedParentValue);
                     cleanDropDown(whatDropDown);
-                    whatDropDown.insertAdjacentHTML("beforeend", '<li>Aucun résultat</li>');
+                    whatDropDown.insertAdjacentHTML("beforeend", '<p>Aucun résultat</p>');
                 } else if (matchedElementsInList.length >= 1) {
                     arrayToDropDown(matchedElementsInList, capturedParentValue);
                 }
