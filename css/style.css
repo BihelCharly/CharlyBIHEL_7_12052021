@@ -99,6 +99,11 @@ footer span {
   display: grid;
   justify-content: flex-start;
 }
+.input--ingredients input,
+.input--devices input,
+.input--utensils input {
+  width: 100%;
+}
 
 .input--ingredients {
   background-color: #3282F7;
@@ -262,6 +267,7 @@ footer span {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top: 25px;
   }
 
   .input--devices,

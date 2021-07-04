@@ -84,6 +84,7 @@ showOrHideDropdown(allBtns);
 function showOrHideDropdown(nodes) {
     nodes.forEach(function(element) {
         element.addEventListener('click', function(element) {
+            console.log('test');
             // PARAMETER TO KNOW WHAT TO DISPLAY INSIDE CONDITION
             let parentElementClassName = element.explicitOriginalTarget.parentElement.className;
             // CONDITIONS
